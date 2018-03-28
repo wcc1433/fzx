@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szhtwl.mapper.LandBuildMapper">
+  <resultMap id="BaseResultMap" type="com.szhtwl.bean.LandBuild">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="build_id" jdbcType="VARCHAR" property="buildId" />
+    <result column="car_no" jdbcType="VARCHAR" property="carNo" />
+    <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
+    <result column="owner_phone" jdbcType="VARCHAR" property="ownerPhone" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="business_name" jdbcType="VARCHAR" property="businessName" />
+    <result column="community" jdbcType="VARCHAR" property="community" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="rental_money" jdbcType="DECIMAL" property="rentalMoney" />
+    <result column="pay_method" jdbcType="INTEGER" property="payMethod" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="reserve_price" jdbcType="DECIMAL" property="reservePrice" />
+    <result column="buy_price" jdbcType="DECIMAL" property="buyPrice" />
+    <result column="construction_area" jdbcType="INTEGER" property="constructionArea" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="car_type" jdbcType="INTEGER" property="carType" />
+    <result column="circulation_type" jdbcType="INTEGER" property="circulationType" />
+    <result column="circulation_time" jdbcType="VARCHAR" property="circulationTime" />
+    <result column="source_channel" jdbcType="INTEGER" property="sourceChannel" />
+    <result column="now_status" jdbcType="INTEGER" property="nowStatus" />
+    <result column="short_lease" jdbcType="INTEGER" property="shortLease" />
+    <result column="range" jdbcType="INTEGER" property="range" />
+    <result column="broker_id" jdbcType="VARCHAR" property="brokerId" />
+    <result column="maintain_id" jdbcType="VARCHAR" property="maintainId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, build_id, car_no, owner_name, owner_phone, area_name, business_name, community, 
+    location, level, rental_money, pay_method, price, reserve_price, buy_price, construction_area, 
+    type, car_type, circulation_type, circulation_time, source_channel, now_status, short_lease, 
+    range, broker_id, maintain_id, create_time, comment
+  </sql>
+
+  <select id="findOne" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from land_build
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="count" resultType="java.lang.Long">
+    select count(*) from land_build
+  </select>
+  <select id="findList" resultType="java.lang.Integer">
+    select count(*)
+    from land_build
+    <where>
+      <if test="object.carNo != null">
+        and car_no=#{object.carNo}
+      </if>
+      <if test="object.ownerName != null">
+        and owner_name =#{object.ownerName}
+      </if>
+      <if test="object.ownerPhone != null">
+        and  owner_phone =#{object.ownerPhone}
+      </if>
+    </where>
+    <if test="currentSize!=null and rowSize!=null">
+    limit #{currentSize},#{rowSize}
+    </if>
+  </select>
+
+  <delete id="delete" parameterType="java.lang.Integer">
+    delete from land_build
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.szhtwl.bean.LandBuild">
+    insert into land_build
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="buildId != null">
+        build_id,
+      </if>
+      <if test="carNo != null">
+        car_no,
+      </if>
+      <if test="ownerName != null">
+        owner_name,
+      </if>
+      <if test="ownerPhone != null">
+        owner_phone,
+      </if>
+      <if test="areaName != null">
+        area_name,
+      </if>
+      <if test="businessName != null">
+        business_name,
+      </if>
+      <if test="community != null">
+        community,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="rentalMoney != null">
+        rental_money,
+      </if>
+      <if test="payMethod != null">
+        pay_method,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="reservePrice != null">
+        reserve_price,
+      </if>
+      <if test="buyPrice != null">
+        buy_price,
+      </if>
+      <if test="constructionArea != null">
+        construction_area,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="carType != null">
+        car_type,
+      </if>
+      <if test="circulationType != null">
+        circulation_type,
+      </if>
+      <if test="circulationTime != null">
+        circulation_time,
+      </if>
+      <if test="sourceChannel != null">
+        source_channel,
+      </if>
+      <if test="nowStatus != null">
+        now_status,
+      </if>
+      <if test="shortLease != null">
+        short_lease,
+      </if>
+      <if test="range != null">
+        range,
+      </if>
+      <if test="brokerId != null">
+        broker_id,
+      </if>
+      <if test="maintainId != null">
+        maintain_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buildId != null">
+        #{buildId,jdbcType=VARCHAR},
+      </if>
+      <if test="carNo != null">
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null">
+        #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhone != null">
+        #{ownerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessName != null">
+        #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="community != null">
+        #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="rentalMoney != null">
+        #{rentalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="reservePrice != null">
+        #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="buyPrice != null">
+        #{buyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="constructionArea != null">
+        #{constructionArea,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="carType != null">
+        #{carType,jdbcType=INTEGER},
+      </if>
+      <if test="circulationType != null">
+        #{circulationType,jdbcType=INTEGER},
+      </if>
+      <if test="circulationTime != null">
+        #{circulationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceChannel != null">
+        #{sourceChannel,jdbcType=INTEGER},
+      </if>
+      <if test="nowStatus != null">
+        #{nowStatus,jdbcType=INTEGER},
+      </if>
+      <if test="shortLease != null">
+        #{shortLease,jdbcType=INTEGER},
+      </if>
+      <if test="range != null">
+        #{range,jdbcType=INTEGER},
+      </if>
+      <if test="brokerId != null">
+        #{brokerId,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainId != null">
+        #{maintainId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="com.szhtwl.bean.LandBuild">
+    update land_build
+    <set>
+      <if test="buildId != null">
+        build_id = #{buildId,jdbcType=VARCHAR},
+      </if>
+      <if test="carNo != null">
+        car_no = #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null">
+        owner_name = #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhone != null">
+        owner_phone = #{ownerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessName != null">
+        business_name = #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="community != null">
+        community = #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="rentalMoney != null">
+        rental_money = #{rentalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMethod != null">
+        pay_method = #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="reservePrice != null">
+        reserve_price = #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="buyPrice != null">
+        buy_price = #{buyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="constructionArea != null">
+        construction_area = #{constructionArea,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="carType != null">
+        car_type = #{carType,jdbcType=INTEGER},
+      </if>
+      <if test="circulationType != null">
+        circulation_type = #{circulationType,jdbcType=INTEGER},
+      </if>
+      <if test="circulationTime != null">
+        circulation_time = #{circulationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceChannel != null">
+        source_channel = #{sourceChannel,jdbcType=INTEGER},
+      </if>
+      <if test="nowStatus != null">
+        now_status = #{nowStatus,jdbcType=INTEGER},
+      </if>
+      <if test="shortLease != null">
+        short_lease = #{shortLease,jdbcType=INTEGER},
+      </if>
+      <if test="range != null">
+        range = #{range,jdbcType=INTEGER},
+      </if>
+      <if test="brokerId != null">
+        broker_id = #{brokerId,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainId != null">
+        maintain_id = #{maintainId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

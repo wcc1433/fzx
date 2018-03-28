@@ -1,0 +1,8 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://119.29.230.234/db_fzx?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: basemysql123456

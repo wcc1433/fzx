@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szhtwl.mapper.OfficeBuildMapper">
+  <resultMap id="BaseResultMap" type="com.szhtwl.bean.OfficeBuild">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="build_id" jdbcType="VARCHAR" property="buildId" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
+    <result column="owner_phone" jdbcType="VARCHAR" property="ownerPhone" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="business_name" jdbcType="VARCHAR" property="businessName" />
+    <result column="community" jdbcType="VARCHAR" property="community" />
+    <result column="build_number" jdbcType="VARCHAR" property="buildNumber" />
+    <result column="unit_number" jdbcType="VARCHAR" property="unitNumber" />
+    <result column="room_no" jdbcType="VARCHAR" property="roomNo" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="rental_money" jdbcType="DECIMAL" property="rentalMoney" />
+    <result column="pay_method" jdbcType="INTEGER" property="payMethod" />
+    <result column="reserve_price" jdbcType="DECIMAL" property="reservePrice" />
+    <result column="increment_type" jdbcType="VARCHAR" property="incrementType" />
+    <result column="charge_detail" jdbcType="DECIMAL" property="chargeDetail" />
+    <result column="construction_area" jdbcType="INTEGER" property="constructionArea" />
+    <result column="is_spilt" jdbcType="INTEGER" property="isSpilt" />
+    <result column="short_area" jdbcType="INTEGER" property="shortArea" />
+    <result column="floor" jdbcType="INTEGER" property="floor" />
+    <result column="total_floor" jdbcType="INTEGER" property="totalFloor" />
+    <result column="floor_high" jdbcType="INTEGER" property="floorHigh" />
+    <result column="property_level" jdbcType="INTEGER" property="propertyLevel" />
+    <result column="property_money" jdbcType="DECIMAL" property="propertyMoney" />
+    <result column="is_regist" jdbcType="INTEGER" property="isRegist" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="house_type" jdbcType="INTEGER" property="houseType" />
+    <result column="face" jdbcType="INTEGER" property="face" />
+    <result column="decoration" jdbcType="INTEGER" property="decoration" />
+    <result column="is_invoice" jdbcType="INTEGER" property="isInvoice" />
+    <result column="station_num" jdbcType="INTEGER" property="stationNum" />
+    <result column="is_free_time" jdbcType="INTEGER" property="isFreeTime" />
+    <result column="source_channel" jdbcType="INTEGER" property="sourceChannel" />
+    <result column="now_status" jdbcType="INTEGER" property="nowStatus" />
+    <result column="support" jdbcType="INTEGER" property="support" />
+    <result column="short_lease" jdbcType="INTEGER" property="shortLease" />
+    <result column="elevator" jdbcType="INTEGER" property="elevator" />
+    <result column="range" jdbcType="INTEGER" property="range" />
+    <result column="broker" jdbcType="VARCHAR" property="broker" />
+    <result column="maintain_id" jdbcType="VARCHAR" property="maintainId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, build_id, no, owner_name, owner_phone, area_name, business_na, community, build_number, unit_number,
+    room_no, level, rental_money, pay_method, reserve_price, increment_type, charge_detail, 
+    construction_area, is_spilt, short_area, floor, total_floor, floor_high, property_level, 
+    property_money, is_regist, type, house_type, face, decoration, is_invoice, station_num, 
+    is_free_time, source_channel, now_status, support, short_lease, elevator, range, 
+    broker, maintain_id, create_time, comment
+  </sql>
+
+  <select id="findOne" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from office_build
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="count" parameterType="com.szhtwl.bean.OfficeBuild" resultType="java.lang.Long">
+    select count(*) from office_build
+  </select>
+
+  <delete id="delete" parameterType="java.lang.Integer">
+    delete from office_build
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.szhtwl.bean.OfficeBuild">
+    insert into office_build
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="buildId != null">
+        build_id,
+      </if>
+      <if test="no != null">
+        no,
+      </if>
+      <if test="ownerName != null">
+        owner_name,
+      </if>
+      <if test="ownerPhone != null">
+        owner_phone,
+      </if>
+      <if test="community != null">
+        community,
+      </if>
+      <if test="buildNumber != null">
+        build_number,
+      </if>
+      <if test="unitNumber != null">
+        unit_number,
+      </if>
+      <if test="roomNo != null">
+        room_no,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="rentalMoney != null">
+        rental_money,
+      </if>
+      <if test="payMethod != null">
+        pay_method,
+      </if>
+      <if test="reservePrice != null">
+        reserve_price,
+      </if>
+      <if test="incrementType != null">
+        increment_type,
+      </if>
+      <if test="chargeDetail != null">
+        charge_detail,
+      </if>
+      <if test="constructionArea != null">
+        construction_area,
+      </if>
+      <if test="isSpilt != null">
+        is_spilt,
+      </if>
+      <if test="shortArea != null">
+        short_area,
+      </if>
+      <if test="floor != null">
+        floor,
+      </if>
+      <if test="totalFloor != null">
+        total_floor,
+      </if>
+      <if test="floorHigh != null">
+        floor_high,
+      </if>
+      <if test="propertyLevel != null">
+        property_level,
+      </if>
+      <if test="propertyMoney != null">
+        property_money,
+      </if>
+      <if test="isRegist != null">
+        is_regist,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="houseType != null">
+        house_type,
+      </if>
+      <if test="face != null">
+        face,
+      </if>
+      <if test="decoration != null">
+        decoration,
+      </if>
+      <if test="isInvoice != null">
+        is_invoice,
+      </if>
+      <if test="stationNum != null">
+        station_num,
+      </if>
+      <if test="isFreeTime != null">
+        is_free_time,
+      </if>
+      <if test="sourceChannel != null">
+        source_channel,
+      </if>
+      <if test="nowStatus != null">
+        now_status,
+      </if>
+      <if test="support != null">
+        support,
+      </if>
+      <if test="shortLease != null">
+        short_lease,
+      </if>
+      <if test="elevator != null">
+        elevator,
+      </if>
+      <if test="range != null">
+        range,
+      </if>
+      <if test="broker != null">
+        broker,
+      </if>
+      <if test="maintainId != null">
+        maintain_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="areaName != null">
+        area_name,
+      </if>
+      <if test="businessName != null">
+        business_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buildId != null">
+        #{buildId,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null">
+        #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhone != null">
+        #{ownerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="community != null">
+        #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="buildNumber != null">
+        #{buildNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNumber != null">
+        #{unitNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNo != null">
+        #{roomNo,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="rentalMoney != null">
+        #{rentalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="reservePrice != null">
+        #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="incrementType != null">
+        #{incrementType,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeDetail != null">
+        #{chargeDetail,jdbcType=DECIMAL},
+      </if>
+      <if test="constructionArea != null">
+        #{constructionArea,jdbcType=INTEGER},
+      </if>
+      <if test="isSpilt != null">
+        #{isSpilt,jdbcType=INTEGER},
+      </if>
+      <if test="shortArea != null">
+        #{shortArea,jdbcType=INTEGER},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=INTEGER},
+      </if>
+      <if test="totalFloor != null">
+        #{totalFloor,jdbcType=INTEGER},
+      </if>
+      <if test="floorHigh != null">
+        #{floorHigh,jdbcType=INTEGER},
+      </if>
+      <if test="propertyLevel != null">
+        #{propertyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="propertyMoney != null">
+        #{propertyMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="isRegist != null">
+        #{isRegist,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="houseType != null">
+        #{houseType,jdbcType=INTEGER},
+      </if>
+      <if test="face != null">
+        #{face,jdbcType=INTEGER},
+      </if>
+      <if test="decoration != null">
+        #{decoration,jdbcType=INTEGER},
+      </if>
+      <if test="isInvoice != null">
+        #{isInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="stationNum != null">
+        #{stationNum,jdbcType=INTEGER},
+      </if>
+      <if test="isFreeTime != null">
+        #{isFreeTime,jdbcType=INTEGER},
+      </if>
+      <if test="sourceChannel != null">
+        #{sourceChannel,jdbcType=INTEGER},
+      </if>
+      <if test="nowStatus != null">
+        #{nowStatus,jdbcType=INTEGER},
+      </if>
+      <if test="support != null">
+        #{support,jdbcType=INTEGER},
+      </if>
+      <if test="shortLease != null">
+        #{shortLease,jdbcType=INTEGER},
+      </if>
+      <if test="elevator != null">
+        #{elevator,jdbcType=INTEGER},
+      </if>
+      <if test="range != null">
+        #{range,jdbcType=INTEGER},
+      </if>
+      <if test="broker != null">
+        #{broker,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainId != null">
+        #{maintainId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARBINARY},
+      </if>
+      <if test="businessName != null">
+        #{businessName,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="com.szhtwl.bean.OfficeBuild">
+    update office_build
+    <set>
+      <if test="buildId != null">
+        build_id = #{buildId,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null">
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null">
+        owner_name = #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhone != null">
+        owner_phone = #{ownerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="community != null">
+        community = #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="buildNumber != null">
+        build_number = #{buildNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="unitNumber != null">
+        unit_number = #{unitNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNo != null">
+        room_no = #{roomNo,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="rentalMoney != null">
+        rental_money = #{rentalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMethod != null">
+        pay_method = #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="reservePrice != null">
+        reserve_price = #{reservePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="incrementType != null">
+        increment_type = #{incrementType,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeDetail != null">
+        charge_detail = #{chargeDetail,jdbcType=DECIMAL},
+      </if>
+      <if test="constructionArea != null">
+        construction_area = #{constructionArea,jdbcType=INTEGER},
+      </if>
+      <if test="isSpilt != null">
+        is_spilt = #{isSpilt,jdbcType=INTEGER},
+      </if>
+      <if test="shortArea != null">
+        short_area = #{shortArea,jdbcType=INTEGER},
+      </if>
+      <if test="floor != null">
+        floor = #{floor,jdbcType=INTEGER},
+      </if>
+      <if test="totalFloor != null">
+        total_floor = #{totalFloor,jdbcType=INTEGER},
+      </if>
+      <if test="floorHigh != null">
+        floor_high = #{floorHigh,jdbcType=INTEGER},
+      </if>
+      <if test="propertyLevel != null">
+        property_level = #{propertyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="propertyMoney != null">
+        property_money = #{propertyMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="isRegist != null">
+        is_regist = #{isRegist,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="houseType != null">
+        house_type = #{houseType,jdbcType=INTEGER},
+      </if>
+      <if test="face != null">
+        face = #{face,jdbcType=INTEGER},
+      </if>
+      <if test="decoration != null">
+        decoration = #{decoration,jdbcType=INTEGER},
+      </if>
+      <if test="isInvoice != null">
+        is_invoice = #{isInvoice,jdbcType=INTEGER},
+      </if>
+      <if test="stationNum != null">
+        station_num = #{stationNum,jdbcType=INTEGER},
+      </if>
+      <if test="isFreeTime != null">
+        is_free_time = #{isFreeTime,jdbcType=INTEGER},
+      </if>
+      <if test="sourceChannel != null">
+        source_channel = #{sourceChannel,jdbcType=INTEGER},
+      </if>
+      <if test="nowStatus != null">
+        now_status = #{nowStatus,jdbcType=INTEGER},
+      </if>
+      <if test="support != null">
+        support = #{support,jdbcType=INTEGER},
+      </if>
+      <if test="shortLease != null">
+        short_lease = #{shortLease,jdbcType=INTEGER},
+      </if>
+      <if test="elevator != null">
+        elevator = #{elevator,jdbcType=INTEGER},
+      </if>
+      <if test="range != null">
+        range = #{range,jdbcType=INTEGER},
+      </if>
+      <if test="broker != null">
+        broker = #{broker,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainId != null">
+        maintain_id = #{maintainId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARBINARY},
+      </if>
+      <if test="businessName != null">
+        business_name = #{businessName,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
