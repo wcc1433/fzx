@@ -8,7 +8,7 @@ import com.szhtwl.enums.ExceptionEnum;
 public class FzxException extends RuntimeException{
     private String code;
 
-    private String msg;
+    private String msg;//
 
     public FzxException() {
         super();
