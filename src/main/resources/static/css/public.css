@@ -1,0 +1,54 @@
+@charset "utf-8";
+/*
+公共 css模板
+ */
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+html {
+    width: 100%;
+	height: 100%;
+}
+body {
+	height: 100%;
+    font-size: 13px;
+}
+ul, li {
+    list-style: none;
+}
+input {
+    border: none;
+}
+img {
+    border: none;
+}
+a, a:focus {
+    text-decoration: none;
+    color: #000;
+    outline: none;
+    blr:expression(this.onFocus=this.blur());/* 图片链接被点击时周围不显示虚线 */
+    cursor: pointer;
+}
+a:hover {
+    color: #EB5409;
+    text-decoration:none;
+    cursor: pointer;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+dl, dt, dd, span{
+    display:block;
+}
+
+/* 清除 input[number]里面的上下小箭头 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}

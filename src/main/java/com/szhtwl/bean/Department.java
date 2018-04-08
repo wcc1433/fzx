@@ -2,10 +2,10 @@ package com.szhtwl.bean;
 
 import java.util.Date;
 
-public class District {
+public class Department {
     private Integer id;
 
-    private String districtName;
+    private String departmentName;
 
     private Date createTime;
 
@@ -17,12 +17,12 @@ public class District {
         this.id = id;
     }
 
-    public String getDistrictName() {
-        return districtName;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setDistrictName(String districtName) {
-        this.districtName = districtName == null ? null : districtName.trim();
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName == null ? null : departmentName.trim();
     }
 
     public Date getCreateTime() {

@@ -1,15 +1,11 @@
 package com.szhtwl.bean;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Business implements Serializable{
-
-    private static final long serialVersionUID = 7758152211217641539L;
-
+public class Business {
     private Integer id;
 
-    private Integer area;
+    private Byte area;
 
     private String name;
 
@@ -23,11 +19,11 @@ public class Business implements Serializable{
         this.id = id;
     }
 
-    public Integer getArea() {
+    public Byte getArea() {
         return area;
     }
 
-    public void setArea(Integer area) {
+    public void setArea(Byte area) {
         this.area = area;
     }
 

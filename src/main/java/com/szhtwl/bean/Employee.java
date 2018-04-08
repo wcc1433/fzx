@@ -1,25 +1,23 @@
 package com.szhtwl.bean;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Employee implements Serializable {
-
-    private static final long serialVersionUID = 1211137039325718922L;
-
+public class Employee {
     private Integer id;
 
     private String employeeName;
 
     private String headImgUri;
 
-    private Integer sex;
+    private String sex;
 
     private String phone;
 
+    private Byte employeeType;
+
     private Integer departmentId;
 
-    private Integer stationManageId;
+    private Integer stationId;
 
     private String idCard;
 
@@ -51,12 +49,12 @@ public class Employee implements Serializable {
         this.headImgUri = headImgUri == null ? null : headImgUri.trim();
     }
 
-    public Integer getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Integer sex) {
-        this.sex = sex;
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
     }
 
     public String getPhone() {
@@ -67,6 +65,14 @@ public class Employee implements Serializable {
         this.phone = phone == null ? null : phone.trim();
     }
 
+    public Byte getEmployeeType() {
+        return employeeType;
+    }
+
+    public void setEmployeeType(Byte employeeType) {
+        this.employeeType = employeeType;
+    }
+
     public Integer getDepartmentId() {
         return departmentId;
     }
@@ -75,12 +81,12 @@ public class Employee implements Serializable {
         this.departmentId = departmentId;
     }
 
-    public Integer getStationManageId() {
-        return stationManageId;
+    public Integer getStationId() {
+        return stationId;
     }
 
-    public void setStationManageId(Integer stationManageId) {
-        this.stationManageId = stationManageId;
+    public void setStationId(Integer stationId) {
+        this.stationId = stationId;
     }
 
     public String getIdCard() {

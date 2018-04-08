@@ -2,12 +2,12 @@ package com.szhtwl.bean;
 
 import java.util.Date;
 
-public class Shop {
+public class Group {
     private Integer id;
 
-    private String shopName;
+    private String groupName;
 
-    private Integer districtId;
+    private Integer shopId;
 
     private Date createTime;
 
@@ -19,20 +19,20 @@ public class Shop {
         this.id = id;
     }
 
-    public String getShopName() {
-        return shopName;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName == null ? null : shopName.trim();
+    public void setGroupName(String groupName) {
+        this.groupName = groupName == null ? null : groupName.trim();
     }
 
-    public Integer getDistrictId() {
-        return districtId;
+    public Integer getShopId() {
+        return shopId;
     }
 
-    public void setDistrictId(Integer districtId) {
-        this.districtId = districtId;
+    public void setShopId(Integer shopId) {
+        this.shopId = shopId;
     }
 
     public Date getCreateTime() {

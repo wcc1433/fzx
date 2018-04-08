@@ -1,23 +1,13 @@
 package com.szhtwl.bean;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Community implements Serializable {
-
-    private static final long serialVersionUID = 3859211399173617291L;
-
+public class Community {
     private Integer id;
 
     private String communityName;
 
-    private Integer area;
-
     private Integer businessId;
-
-    private String address;
-
-    private Integer buildNumber;
 
     private Date createTime;
 
@@ -37,36 +27,12 @@ public class Community implements Serializable {
         this.communityName = communityName == null ? null : communityName.trim();
     }
 
-    public Integer getArea() {
-        return area;
-    }
-
-    public void setArea(Integer area) {
-        this.area = area;
-    }
-
     public Integer getBusinessId() {
         return businessId;
     }
 
     public void setBusinessId(Integer businessId) {
         this.businessId = businessId;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public Integer getBuildNumber() {
-        return buildNumber;
-    }
-
-    public void setBuildNumber(Integer buildNumber) {
-        this.buildNumber = buildNumber;
     }
 
     public Date getCreateTime() {

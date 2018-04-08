@@ -1,12 +1,8 @@
 package com.szhtwl.bean;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class ClientFootmark implements Serializable {
-
-    private static final long serialVersionUID = 3458063981261478105L;
-
+public class ClientFootmark {
     private Integer id;
 
     private Integer clientId;
