@@ -28,7 +28,7 @@
     </appender>
 
     <!--输出sql语句-->
-    <logger name="com.szhtwl.mapper" level="DEBUG"/>
+    <logger name="com.jx.ops.mapper" level="DEBUG"/>
 
     <!-- 日志输出级别 -->
     <root level="INFO">

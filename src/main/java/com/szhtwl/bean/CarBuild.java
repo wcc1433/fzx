@@ -10,8 +10,6 @@ public class CarBuild implements Serializable {
 
     private Integer id;
 
-    private String buildId;
-
     private String carNo;
 
     private String ownerName;
@@ -68,14 +66,6 @@ public class CarBuild implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getBuildId() {
-        return buildId;
-    }
-
-    public void setBuildId(String buildId) {
-        this.buildId = buildId == null ? null : buildId.trim();
     }
 
     public String getCarNo() {

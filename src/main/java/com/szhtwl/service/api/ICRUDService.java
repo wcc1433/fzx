@@ -1,5 +1,6 @@
 package com.szhtwl.service.api;
 
+import com.szhtwl.form.ConditionForm;
 import com.szhtwl.vo.ResultVO;
 
 import java.util.Map;
@@ -11,7 +12,7 @@ public interface ICRUDService<T> {
 
     ResultVO findOne(Integer id);
 
-    ResultVO findList(T t,Integer showPage,Integer rowSize, String condition);
+    ResultVO findList(ConditionForm conditionForm, Integer showPage, Integer rowSize, String condition);
 
     ResultVO update(T t);
 

@@ -1,8 +1,20 @@
 server:
-  port: 8088
+  port: 8089
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://119.29.230.234/db_fzx?useUnicode=true&characterEncoding=utf-8
+    #192.168.1.107
+    url: jdbc:mysql://localhost:3306/jxcw?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: basemysql123456
+    #123456
+    password: 123
+  #定义模板
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    #开发时关闭缓存，不然无法看到页面
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html

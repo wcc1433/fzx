@@ -3,7 +3,6 @@
 <mapper namespace="com.szhtwl.mapper.CarBuildMapper">
   <resultMap id="BaseResultMap" type="com.szhtwl.bean.CarBuild">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="build_id" jdbcType="VARCHAR" property="buildId" />
     <result column="car_no" jdbcType="VARCHAR" property="carNo" />
     <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
     <result column="owner_phone" jdbcType="VARCHAR" property="ownerPhone" />
@@ -32,7 +31,7 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, build_id, car_no, owner_name, owner_phone, area_name, business_name, community, 
+    id, car_no, owner_name, owner_phone, area_name, business_name, community,
     build_number, level, rental_money, pay_method, price, reserve_price, construction_area, 
     park_car_num, type, house_type, source_channel, now_status, support, short_lease, 
     range, broker_id, maintain_id, create_time, comment
@@ -76,9 +75,6 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
-      </if>
-      <if test="buildId != null">
-        build_id,
       </if>
       <if test="carNo != null">
         car_no,
@@ -244,9 +240,6 @@
   <update id="update" parameterType="com.szhtwl.bean.CarBuild">
     update car_build
     <set>
-      <if test="buildId != null">
-        build_id = #{buildId,jdbcType=VARCHAR},
-      </if>
       <if test="carNo != null">
         car_no = #{carNo,jdbcType=VARCHAR},
       </if>

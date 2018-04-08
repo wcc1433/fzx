@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8089
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
@@ -16,5 +16,5 @@ spring:
       content-type: text/html
     #开发时关闭缓存，不然无法看到页面
     cache: false
-    #prefix: classpath:/templates/
-    #suffix: .html
+    prefix: classpath:/templates/
+    suffix: .html

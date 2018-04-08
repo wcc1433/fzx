@@ -5,6 +5,7 @@ import com.szhtwl.bean.Page;
 import com.szhtwl.enums.ExceptionEnum;
 import com.szhtwl.enums.ResultEnum;
 import com.szhtwl.exception.FzxException;
+import com.szhtwl.form.ConditionForm;
 import com.szhtwl.mapper.CarBuildMapper;
 import com.szhtwl.service.api.ICarBuildService;
 import com.szhtwl.vo.ResultVO;
@@ -54,8 +55,12 @@ public class CarBuildService implements ICarBuildService {
         return new ResultVO(null, ResultEnum.HTTP_CODE_ERROR);
     }
 
-    @RequestMapping("/findList")
     @Override
+    public ResultVO findList(ConditionForm conditionForm, Integer showPage, Integer rowSize, String condition) {
+        return null;
+    }
+
+    @RequestMapping("/findList")
     public ResultVO findList(CarBuild carBuild, Integer showPage, Integer rowSize, String condition) {
         Page page = new Page();
         try{

@@ -62,13 +62,13 @@
     maintain_id, create_time, comment
   </sql>
 
-  <select id="selectOne" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findOne" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from merch_build
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="countByExample" parameterType="com.szhtwl.bean.MerchBuild" resultType="java.lang.Long">
+  <select id="count" parameterType="com.szhtwl.bean.MerchBuild" resultType="java.lang.Long">
     select count(*) from merch_build
   </select>
 
