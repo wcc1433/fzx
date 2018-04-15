@@ -1,8 +1,14 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Station {
+/**
+ * 岗位
+ */
+public class Station implements Serializable {
+    private static final long serialVersionUID = 4429020781638000083L;
+
     private Integer id;
 
     private String stationName;

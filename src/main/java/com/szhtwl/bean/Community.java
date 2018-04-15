@@ -1,8 +1,14 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Community {
+/**
+ * 小区
+ */
+public class Community implements Serializable {
+    private static final long serialVersionUID = -3814530369737528112L;
+
     private Integer id;
 
     private String communityName;

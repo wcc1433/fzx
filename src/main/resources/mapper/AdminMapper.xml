@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.szhtwl.mapper.AdminMapper">
+    <resultMap id="BaseResultMap" type="com.szhtwl.bean.Admin">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="employee_id" jdbcType="INTEGER" property="employeeId" />
+        <result column="open_id" jdbcType="VARCHAR" property="openId" />
+        <result column="enable" jdbcType="TINYINT" property="enable" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, password, employee_id, open_id, enable, create_time
+    </sql>
+
+    <select id="login" resultMap="BaseResultMap">
+        select * from admin
+        where name = #{name} AND enable = #{enable}
+    </select>
+
+    <select id="findOne" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from admin
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="count" parameterType="com.szhtwl.bean.Admin" resultType="java.lang.Long">
+        select count(*)
+        from admin
+        <where>
+            <if test="">
+
+            </if>
+            <if test="">
+
+            </if>
+            <if test="">
+
+            </if>
+            <if test="">
+
+            </if>
+            <if test="">
+
+            </if>
+        </where>
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from admin
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.szhtwl.bean.Admin">
+        insert into admin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="employeeId != null">
+                employee_id,
+            </if>
+            <if test="openId != null">
+                open_id,
+            </if>
+            <if test="enable != null">
+                enable,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="employeeId != null">
+                #{employeeId,jdbcType=INTEGER},
+            </if>
+            <if test="openId != null">
+                #{openId,jdbcType=VARCHAR},
+            </if>
+            <if test="enable != null">
+                #{enable,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.szhtwl.bean.Admin">
+        update admin
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="employeeId != null">
+                employee_id = #{employeeId,jdbcType=INTEGER},
+            </if>
+            <if test="openId != null">
+                open_id = #{openId,jdbcType=VARCHAR},
+            </if>
+            <if test="enable != null">
+                enable = #{enable,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

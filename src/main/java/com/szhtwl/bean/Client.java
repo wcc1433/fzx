@@ -1,11 +1,20 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Client {
+/**
+ * 客户
+ */
+public class Client implements Serializable {
+    private static final long serialVersionUID = -2843284294455191798L;
+
     private Integer id;
 
+    /**
+     * 头像链接
+     */
     private String headImgUri;
 
     private String clientName;
@@ -14,18 +23,30 @@ public class Client {
 
     private Integer sex;
 
+    /**
+     * 客户所属区域
+     */
     private Integer clientArea;
 
+    /**
+     * 客户地址
+     */
     private String clientAddress;
 
     private String cartId;
 
     private Date birthday;
 
+    /**
+     * 意向商圈
+     */
     private Integer clientBusinessId;
 
     private Integer requireHouseType;
 
+    /**
+     * 意向小区
+     */
     private Integer requireCommunityId;
 
     private Integer requireAreaMin;
@@ -42,6 +63,9 @@ public class Client {
 
     private String target;
 
+    /**
+     * 备注
+     */
     private String remark;
 
     private Integer dynamicCount;

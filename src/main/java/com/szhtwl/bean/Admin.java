@@ -1,18 +1,33 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Admin {
+/**
+ * 管理员
+ */
+public class Admin implements Serializable {
+    private static final long serialVersionUID = -540325659053005476L;
+
+    public static final Byte ENABLE = 1;// 可用
+    public static final Byte UNABLE = 0;// 禁用
+
     private Integer id;
 
     private String name;
 
     private String password;
 
+    /**
+     * 员工 id，关联员工表
+     */
     private Integer employeeId;
 
     private String openId;
 
+    /**
+     * 账号是否可用（0：禁用/1：可用）
+     */
     private Byte enable;
 
     private Date createTime;

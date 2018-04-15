@@ -1,8 +1,14 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ClientFootmark {
+/**
+ * 客户足迹
+ */
+public class ClientFootmark implements Serializable {
+    private static final long serialVersionUID = 3458063981261478105L;
+
     private Integer id;
 
     private Integer clientId;

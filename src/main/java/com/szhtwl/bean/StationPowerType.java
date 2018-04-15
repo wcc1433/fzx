@@ -1,6 +1,13 @@
 package com.szhtwl.bean;
 
-public class StationPowerType {
+import java.io.Serializable;
+
+/**
+ * 权限分类
+ */
+public class StationPowerType implements Serializable {
+    private static final long serialVersionUID = -4169594889378407065L;
+
     private Integer id;
 
     private String powerName;

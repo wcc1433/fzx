@@ -1,8 +1,14 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Business {
+/**
+ * 商圈
+ */
+public class Business implements Serializable {
+    private static final long serialVersionUID = 223887788860275197L;
+
     private Integer id;
 
     private Byte area;

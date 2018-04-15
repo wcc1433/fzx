@@ -1,8 +1,14 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class District {
+/**
+ * 片区
+ */
+public class District implements Serializable {
+    private static final long serialVersionUID = -5578489486426670548L;
+
     private Integer id;
 
     private String districtName;

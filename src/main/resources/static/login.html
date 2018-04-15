@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>fzx</title>
+    <link href="css/public.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="body">
+        <div id="loginForm">
+            <form method="POST" class="form" action="javascript: void(0);">
+                <label id="label_adminName" for="adminName">管理员登陆</label>
+                <span id="message"></span>
+                <input id="adminName" name="name" type="text" placeholder="用户名" />
+                <input id="password" name="password" type="password" placeholder="密码" />
+                <div id="box_verificationCode">
+                    <input id="verificationCode" name="verificationCode" type="number" placeholder="验证码" />
+                    <img id="img_verificationCode" src="/verificationCode" />
+                </div>
+                <input id="submit" type="button" value="登陆" />
+            </form>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $().ready(function () {
+            // 切换验证码
+            $(document.body).on("click", "#img_verificationCode", function () {
+                $(this).attr("src", $(this).attr("src").split('?')[0] + '?date=' + new Date().getTime());
+            });
+
+            // 登陆
+            $(document.body).on("click", "#submit", function () {
+                login();
+            });
+        });
+
+        function login() {
+            if(!loginVerify()) {
+                return;
+            }
+
+            var url = '/admin/login';
+            var formData = new FormData($(".form")[0]);
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: false,
+                processData: false,
+                data: formData,
+                dataType: "json",
+                xhr: xhrOnProgress(function (e) {
+                    var percent = e.loaded / e.total;// 计算百分比
+                    console.log("ajax发送数据百分比：" + percent);
+                }),
+                success: function (jsonData) {
+                    var data = $.parseJSON(jsonData);
+                    if (data.code == '500') {
+                        $("#message").html(data.msg);
+                        return;
+                    }
+
+                    window.location.replace('index.html');
+                },
+                error: function () {
+                    $("#message").html("网络错误");
+                }
+            });
+        }
+
+        /**
+        * 登陆验证
+        */
+        function loginVerify() {
+            if($("#adminName").val() == "") {
+                $("#message").html("*用户名不能为空");
+                return false;
+            }
+            if($("#password").val() == "") {
+                $("#message").html("*密码不能为空");
+                return false;
+            }
+            if($("#verificationCode").val() == "") {
+                $("#message").html("*验证不能为空");
+                return false;
+            }
+            $("#message").html("");
+            return true;
+        }
+
+        /**
+         * 监听ajax发送数据的进度
+         * @param 待绑定的监听函数（异步提交过程中的执行的函数）
+         * @return XMLHttpRequest
+         */
+        var xhrOnProgress = function (fun) {
+            xhrOnProgress.onprogress = fun; //绑定监听
+            return function () {
+                //通过$.ajaxSettings.xhr();获得XMLHttpRequest对象
+                var xhr = $.ajaxSettings.xhr();
+                //判断监听函数是否为函数
+                if (typeof xhrOnProgress.onprogress !== 'function')
+                    return xhr;
+                //如果有监听函数并且xhr对象支持绑定时就把监听函数绑定上去
+                if (xhrOnProgress.onprogress && xhr.upload) {
+                    xhr.upload.onprogress = xhrOnProgress.onprogress;
+                }
+                return xhr;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,8 +1,14 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class StationPowerValue {
+/**
+ * 权限值
+ */
+public class StationPowerValue implements Serializable {
+    private static final long serialVersionUID = 3220877529760089334L;
+
     private Integer id;
 
     private Integer stationId;

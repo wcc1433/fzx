@@ -1,8 +1,14 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Group {
+/**
+ * 分组
+ */
+public class Group implements Serializable {
+    private static final long serialVersionUID = -4702759948015683L;
+
     private Integer id;
 
     private String groupName;

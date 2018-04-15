@@ -1,8 +1,14 @@
 package com.szhtwl.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Department {
+/**
+ * 部门
+ */
+public class Department implements Serializable {
+    private static final long serialVersionUID = -8735364848516108884L;
+
     private Integer id;
 
     private String departmentName;
